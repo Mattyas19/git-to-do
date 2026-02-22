@@ -11,11 +11,24 @@ taskInput.addEventListener("keypress", function (e) {
 
 function addTask() {
     const taskText = taskInput.value.trim();
-
     if (taskText === "") return;
 
     const li = document.createElement("li");
-    li.textContent = taskText;
+
+    // Task text
+    const span = document.createElement("span");
+    span.textContent = taskText;
+
+    // Delete button
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+
+    deleteBtn.addEventListener("click", function () {
+        li.remove();
+    });
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
 
     taskList.appendChild(li);
 
